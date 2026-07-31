@@ -26,50 +26,63 @@ body {
     align-items: center;
     overflow-x: hidden;
     position: relative;
+    padding: 20px;
 }
 
 /* Ambient background glowing orbs */
 .glow-orb {
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(100px);
     z-index: 0;
-    opacity: 0.5;
+    opacity: 0.4;
 }
 
 .orb-1 {
-    top: -50px;
-    left: -50px;
+    top: -100px;
+    left: -100px;
     background: #ff758c;
 }
 
 .orb-2 {
-    bottom: -50px;
-    right: -50px;
+    bottom: -100px;
+    right: -100px;
     background: #ff7eb3;
+}
+
+/* Two-Column Workspace Layout */
+.workspace-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 30px;
+    max-width: 900px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 /* Glassmorphism Card Container */
 .glass-card {
-    position: relative;
-    z-index: 1;
     background: var(--card-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 40px;
+    padding: 30px;
     border-radius: 24px;
     box-shadow: var(--shadow);
-    width: 90%;
-    max-width: 440px;
-    text-align: center;
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Header Styling */
 header {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .badge {
@@ -80,49 +93,157 @@ header {
     font-weight: 600;
     padding: 4px 12px;
     border-radius: 50px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+}
+
+.game-badge {
+    background-color: #fef3c7;
+    color: #d97706;
 }
 
 header h1 {
     font-size: 1.8rem;
     font-weight: 700;
     color: var(--text-main);
-    margin-bottom: 8px;
+    margin-bottom: 4px;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
 }
 
 header p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* About Section Specifics */
+.about-section {
+    background: rgba(248, 250, 252, 0.8);
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 15px;
+}
+
+.about-section h3 {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.about-section p {
+    font-size: 0.88rem;
     color: var(--text-muted);
     line-height: 1.5;
 }
 
-/* Counter Box Styling */
-.counter-box {
-    background: rgba(248, 250, 252, 0.8);
-    border: 1px solid #e2e8f0;
-    border-radius: 16px;
-    padding: 20px;
+.highlights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
-.counter-box > p {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    margin-bottom: 10px;
+.highlight-item {
+    background: rgba(248, 250, 252, 0.8);
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
 }
 
-.counter-display {
-    font-size: 2.5rem;
+.highlight-item strong {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.highlight-item span {
+    font-size: 0.95rem;
     font-weight: 700;
     color: var(--primary);
+}
+
+/* Mini-Game Arena Styles */
+.game-main {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     margin-bottom: 15px;
 }
 
-.button-group {
+.game-stats {
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    background: rgba(248, 250, 252, 0.8);
+    padding: 10px 16px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.game-arena {
+    position: relative;
+    height: 220px;
+    background: #0f172a;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.game-target {
+    position: absolute;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+    display: none;
+    transition: transform 0.1s ease;
+}
+
+.game-target:active {
+    transform: scale(0.9);
+}
+
+.game-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    z-index: 2;
+}
+
+.game-overlay h3 {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+}
+
+.game-overlay p {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-bottom: 15px;
 }
 
 /* Button Styles */
@@ -140,23 +261,11 @@ button {
 .primary-btn {
     background-color: var(--primary);
     color: white;
-    flex: 1;
     box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
 
 .primary-btn:hover {
     background-color: var(--primary-hover);
-    transform: translateY(-2px);
-}
-
-.secondary-btn {
-    background-color: #e2e8f0;
-    color: var(--text-main);
-    flex: 1;
-}
-
-.secondary-btn:hover {
-    background-color: #cbd5e1;
     transform: translateY(-2px);
 }
 
@@ -175,7 +284,8 @@ button {
 
 /* Footer Styling */
 footer {
-    margin-top: 25px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-muted);
+    text-align: center;
+    margin-top: 10px;
 }
