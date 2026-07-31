@@ -1,4 +1,4 @@
-/* CSS Variables for consistent theming and smooth transitions */
+/* CSS Variables for clean theming */
 :root {
     --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --card-bg: rgba(255, 255, 255, 0.85);
@@ -26,10 +26,9 @@ body {
     align-items: center;
     overflow-x: hidden;
     position: relative;
-    transition: background 0.5s ease;
 }
 
-/* Ambient background glowing orbs for a modern polished feel */
+/* Ambient background glowing orbs */
 .glow-orb {
     position: absolute;
     width: 300px;
@@ -38,7 +37,6 @@ body {
     filter: blur(80px);
     z-index: 0;
     opacity: 0.5;
-    animation: float 8s ease-in-out infinite alternate;
 }
 
 .orb-1 {
@@ -51,12 +49,6 @@ body {
     bottom: -50px;
     right: -50px;
     background: #ff7eb3;
-    animation-delay: -4s;
-}
-
-@keyframes float {
-    0% { transform: translateY(0px) scale(1); }
-    100% { transform: translateY(20px) scale(1.05); }
 }
 
 /* Glassmorphism Card Container */
@@ -73,12 +65,6 @@ body {
     width: 90%;
     max-width: 440px;
     text-align: center;
-    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Header Styling */
@@ -139,7 +125,7 @@ header p {
     justify-content: center;
 }
 
-/* Button Styles with Smooth Transitions */
+/* Button Styles */
 button {
     font-family: 'Plus Jakarta Sans', sans-serif;
     font-weight: 600;
