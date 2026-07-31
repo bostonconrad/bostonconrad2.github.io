@@ -3,32 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Awesome Website</title>
+    <title>My Super Polished Website</title>
+    <!-- Google Fonts for a modern, clean typography look -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Link to our external CSS stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Main header section -->
-    <header>
-        <h1>Welcome to My Website!</h1>
-        <p>Built with HTML, CSS, and JavaScript, hosted on GitHub Pages.</p>
-    </header>
+    <!-- Decorative background glow elements for polish -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
 
-    <!-- Main content container -->
-    <main>
-        <section class="card">
-            <h2>Interactive Section</h2>
-            <p>Click the button below to see JavaScript in action!</p>
-            <!-- A button that triggers a JavaScript function when clicked -->
-            <button id="colorButton">Click Me!</button>
-        </section>
-    </main>
+    <!-- Main container card -->
+    <div class="glass-card">
+        <header>
+            <!-- Dynamic greeting populated by JavaScript -->
+            <span id="greetingBadge" class="badge">Hello!</span>
+            <h1>Welcome to My Space</h1>
+            <p>Crafted with HTML, CSS, and JavaScript, and designed to shine.</p>
+        </header>
 
-    <!-- Footer section -->
-    <footer>
-        <p>&copy; 2026 My Web Development Journey</p>
-    </footer>
+        <main>
+            <!-- Interactive Counter Section -->
+            <div class="counter-box">
+                <p>Interactive Counter:</p>
+                <div class="counter-display">
+                    <span id="counterValue">0</span>
+                </div>
+                <div class="button-group">
+                    <button id="decreaseBtn" class="secondary-btn">Decrease</button>
+                    <button id="increaseBtn" class="primary-btn">Increase</button>
+                </div>
+            </div>
+
+            <!-- Fun Theme Changer Button -->
+            <button id="themeToggleBtn" class="accent-btn">✨ Change Background Vibe</button>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 My Web Development Journey</p>
+        </footer>
+    </div>
 
     <!-- Link to our external JavaScript file -->
     <script src="script.js"></script>
