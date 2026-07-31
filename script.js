@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.background = gradients[currentGradientIndex];
     });
 
-    // 3. Mini-Game Logic ("Catch the Code")
+    // 3. Mini-Game Logic ("Catch the Code") - Cross-Platform (Touch + Click)
     const startGameBtn = document.getElementById('startGameBtn');
     const gameTarget = document.getElementById('gameTarget');
     const gameOverlay = document.getElementById('gameOverlay');
@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let score = 0;
     let timeLeft = 20;
     let gameInterval = null;
-    let targetTimeout = null;
 
     startGameBtn.addEventListener('click', startGame);
 
@@ -69,18 +68,20 @@ document.addEventListener('DOMContentLoaded', () => {
     function moveTarget() {
         if (timeLeft <= 0) return;
 
-        // Calculate random positions inside the arena bounds
+        // Calculate random positions bounded securely inside the arena
         const arenaWidth = gameArena.clientWidth - 80;
         const arenaHeight = gameArena.clientHeight - 40;
         
-        const randomX = Math.floor(Math.random() * arenaWidth);
-        const randomY = Math.floor(Math.random() * arenaHeight);
+        const randomX = Math.max(10, Math.floor(Math.random() * arenaWidth));
+        const randomY = Math.max(10, Math.floor(Math.random() * arenaHeight));
 
         gameTarget.style.left = `${randomX}px`;
         gameTarget.style.top = `${randomY}px`;
     }
 
-    gameTarget.addEventListener('click', () => {
+    // Handles both mouse clicks and mobile finger taps instantly
+    gameTarget.addEventListener('pointerdown', (e) => {
+        e.preventDefault(); // Prevents layout double-taps zooming on mobile phones
         score++;
         scoreValue.textContent = score;
         moveTarget();
@@ -88,11 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function endGame() {
         clearInterval(gameInterval);
-        clearTimeout(targetTimeout);
         gameTarget.style.display = 'none';
         
         overlayTitle.textContent = "Game Over!";
-        overlaySub.textContent = `You caught ${score} items! Great reflexes.`;
+        overlaySub.textContent = `You caught ${score} targets! Great reflexes.`;
         startGameBtn.textContent = "Play Again";
         gameOverlay.style.display = 'flex';
     }
