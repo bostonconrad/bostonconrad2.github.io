@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Polished Website</title>
+    <title>Alex Chen | College Portfolio & Space</title>
     <!-- Google Fonts for modern typography -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Link to our external CSS stylesheet -->
+    <!-- Link to external stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,38 +15,78 @@
     <div class="glow-orb orb-1"></div>
     <div class="glow-orb orb-2"></div>
 
-    <!-- Main glass card container -->
-    <div class="glass-card">
-        <header>
-            <!-- Dynamic greeting populated by JavaScript -->
-            <span id="greetingBadge" class="badge">Hello!</span>
-            <h1>Welcome to My Space</h1>
-            <p>Crafted with HTML, CSS, and JavaScript, and designed to shine.</p>
-        </header>
+    <!-- Main Workspace Split Container -->
+    <div class="workspace-container">
 
-        <main>
-            <!-- Interactive Counter Section -->
-            <div class="counter-box">
-                <p>Interactive Counter:</p>
-                <div class="counter-display">
-                    <span id="counterValue">0</span>
+        <!-- LEFT COLUMN: About Me Profile -->
+        <section class="glass-card profile-card">
+            <header>
+                <span id="greetingBadge" class="badge">Hello!</span>
+                <h1>Alex Chen</h1>
+                <p class="subtitle">Future Computer Science & Innovation Major</p>
+            </header>
+
+            <main>
+                <div class="about-section">
+                    <h3>About Me</h3>
+                    <p>
+                        I'm a passionate creator, coder, and problem solver. When I'm not building web apps or experimenting with algorithms, you can find me leading my school's robotics team or composing electronic music. Excited for my next chapter in higher education!
+                    </p>
                 </div>
-                <div class="button-group">
-                    <button id="decreaseBtn" class="secondary-btn">Decrease</button>
-                    <button id="increaseBtn" class="primary-btn">Increase</button>
+
+                <div class="highlights-grid">
+                    <div class="highlight-item">
+                        <strong>GPA / Rank</strong>
+                        <span>4.0 / Top 5%</span>
+                    </div>
+                    <div class="highlight-item">
+                        <strong>Focus</strong>
+                        <span>Code & Design</span>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Fun Theme Changer Button -->
-            <button id="themeToggleBtn" class="accent-btn">✨ Change Background Vibe</button>
-        </main>
+                <!-- Fun Theme Changer Button -->
+                <button id="themeToggleBtn" class="accent-btn">✨ Change Background Vibe</button>
+            </main>
 
-        <footer>
-            <p>&copy; 2026 My Web Development Journey</p>
-        </footer>
+            <footer>
+                <p>&copy; 2026 Alex Chen &bull; Admissions Portfolio</p>
+            </footer>
+        </section>
+
+        <!-- RIGHT COLUMN: Interactive Mini-Game -->
+        <section class="glass-card game-card">
+            <header>
+                <span class="badge game-badge">🎮 Take a Quick Break</span>
+                <h2>Catch the Code!</h2>
+                <p>Click the glowing target as many times as you can in 20 seconds!</p>
+            </header>
+
+            <main class="game-main">
+                <div class="game-stats">
+                    <div>Score: <span id="scoreValue">0</span></div>
+                    <div>Time: <span id="timerValue">20</span>s</div>
+                </div>
+
+                <!-- Game Arena -->
+                <div id="gameArena" class="game-arena">
+                    <button id="gameTarget" class="game-target">⚡ Click Me!</button>
+                    <div id="gameOverlay" class="game-overlay">
+                        <h3 id="overlayTitle">Ready to Play?</h3>
+                        <p id="overlaySub">Test your reflexes!</p>
+                        <button id="startGameBtn" class="primary-btn">Start Game</button>
+                    </div>
+                </div>
+            </main>
+
+            <footer>
+                <p>Can you beat the high score?</p>
+            </footer>
+        </section>
+
     </div>
 
-    <!-- Link to our external JavaScript file -->
+    <!-- Link to external JavaScript file -->
     <script src="script.js"></script>
 </body>
 </html>
