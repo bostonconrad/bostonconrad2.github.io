@@ -13,33 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         greetingBadge.textContent = "🌙 Good Evening!";
     }
 
-    // 2. Interactive Counter Logic
-    let count = 0;
-    const counterValue = document.getElementById('counterValue');
-    const increaseBtn = document.getElementById('increaseBtn');
-    const decreaseBtn = document.getElementById('decreaseBtn');
-
-    increaseBtn.addEventListener('click', () => {
-        count++;
-        counterValue.textContent = count;
-        animateValue(counterValue);
-    });
-
-    decreaseBtn.addEventListener('click', () => {
-        count--;
-        counterValue.textContent = count;
-        animateValue(counterValue);
-    });
-
-    // Helper function for a quick bounce animation when number changes
-    function animateValue(element) {
-        element.style.transform = 'scale(1.2)';
-        setTimeout(() => {
-            element.style.transform = 'scale(1)';
-        }, 150);
-    }
-
-    // 3. Dynamic Background Vibe / Gradient Changer
+    // 2. Dynamic Background Vibe / Gradient Changer
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     const gradients = [
         'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', // Original Purple
@@ -54,5 +28,73 @@ document.addEventListener('DOMContentLoaded', () => {
         currentGradientIndex = (currentGradientIndex + 1) % gradients.length;
         document.body.style.background = gradients[currentGradientIndex];
     });
+
+    // 3. Mini-Game Logic ("Catch the Code")
+    const startGameBtn = document.getElementById('startGameBtn');
+    const gameTarget = document.getElementById('gameTarget');
+    const gameOverlay = document.getElementById('gameOverlay');
+    const overlayTitle = document.getElementById('overlayTitle');
+    const overlaySub = document.getElementById('overlaySub');
+    const scoreValue = document.getElementById('scoreValue');
+    const timerValue = document.getElementById('timerValue');
+    const gameArena = document.getElementById('gameArena');
+
+    let score = 0;
+    let timeLeft = 20;
+    let gameInterval = null;
+    let targetTimeout = null;
+
+    startGameBtn.addEventListener('click', startGame);
+
+    function startGame() {
+        score = 0;
+        timeLeft = 20;
+        scoreValue.textContent = score;
+        timerValue.textContent = timeLeft;
+        
+        gameOverlay.style.display = 'none';
+        gameTarget.style.display = 'block';
+        moveTarget();
+
+        // Start countdown timer
+        gameInterval = setInterval(() => {
+            timeLeft--;
+            timerValue.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                endGame();
+            }
+        }, 1000);
+    }
+
+    function moveTarget() {
+        if (timeLeft <= 0) return;
+
+        // Calculate random positions inside the arena bounds
+        const arenaWidth = gameArena.clientWidth - 80;
+        const arenaHeight = gameArena.clientHeight - 40;
+        
+        const randomX = Math.floor(Math.random() * arenaWidth);
+        const randomY = Math.floor(Math.random() * arenaHeight);
+
+        gameTarget.style.left = `${randomX}px`;
+        gameTarget.style.top = `${randomY}px`;
+    }
+
+    gameTarget.addEventListener('click', () => {
+        score++;
+        scoreValue.textContent = score;
+        moveTarget();
+    });
+
+    function endGame() {
+        clearInterval(gameInterval);
+        clearTimeout(targetTimeout);
+        gameTarget.style.display = 'none';
+        
+        overlayTitle.textContent = "Game Over!";
+        overlaySub.textContent = `You caught ${score} items! Great reflexes.`;
+        startGameBtn.textContent = "Play Again";
+        gameOverlay.style.display = 'flex';
+    }
 
 });
